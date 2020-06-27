@@ -24,7 +24,7 @@ dependencies:
 dependencies:
   flutter_bugly:
     git:
-      url: get://github.com/long51xy/flutter_bugly
+      url: git://github.com/long51xy/flutter_bugly
       ref: master
 ```
 
