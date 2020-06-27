@@ -24,7 +24,7 @@ dependencies:
 dependencies:
   flutter_bugly:
     git:
-      url: git://github.com/long51xy/flutter_bugly
+      url: git://github.com/long51xy/flutter_bugly_google_play
       ref: master
 ```
 
@@ -78,7 +78,7 @@ flutter build apk --release --target-platform android-arm
  FlutterBugly.setUserTag(tag);
 ```
 
-七、说明（Android）
+六、说明（Android）
 -------
 异常上报说明
 
