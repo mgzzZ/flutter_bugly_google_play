@@ -1,4 +1,5 @@
 此版本为google play 专用版国内误用
+国内版请用 https://github.com/crazecoder/flutter_bugly.git
 
 # flutter_bugly 
 [![pub package](https://img.shields.io/pub/v/flutter_bugly.svg)](https://pub.dartlang.org/packages/flutter_bugly)
@@ -23,8 +24,8 @@ dependencies:
 dependencies:
   flutter_bugly:
     git:
-      url: git://github.com/crazecoder/flutter_bugly.git
-      ref: dev
+      url: get://github.com/long51xy/flutter_bugly
+      ref: master
 ```
 
 二、项目配置
