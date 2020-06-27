@@ -1,4 +1,4 @@
-此版本为google play 专用版国内误用
+此版本为google play 专用版删除修改了所有内置更新的方法 by long51xy
 国内版请用 https://github.com/crazecoder/flutter_bugly.git
 
 # flutter_bugly 
@@ -70,46 +70,12 @@ flutter build apk --release --target-platform android-arm
 -----
 ```dart
  String channel, //自定义渠道标识
- bool autoCheckUpgrade = true,//自动检查更新开关
- bool autoInit = true,//自动初始化
- bool autoDownloadOnWifi = false,//设置Wifi下自动下载
- bool enableNotification = false,//通知栏
- bool showInterruptedStrategy = true, //设置开启显示打断策略
- bool canShowApkInfo = true, //设置是否显示弹窗中的apk信息
- int initDelay = 0, //延迟初始化，单位秒
- int upgradeCheckPeriod = 0, //升级检查周期设置,单位秒
  
- //手动检查更新
- checkUpgrade({
-     bool isManual = false,//用户手动点击检查，非用户点击操作请传false
-     bool isSilence = false,//是否显示弹窗等交互，[true:没有弹窗和toast] [false:有弹窗或toast]
- })
+
  FlutterBugly.setUserId("user id");
  FlutterBugly.putUserData(key: "key", value: "value");
  int tag = 9527;
  FlutterBugly.setUserTag(tag);
-```
-六、自定义弹窗（Android）
-------
-通过FlutterBugly.getUpgradeInfo()获取更新策略信息填入自定义flutter widget，手动弹窗
-
-UpgradeInfo参数：
-```java
-  String id = "";//唯一标识
-  String title = "";//升级提示标题
-  String newFeature = "";//升级特性描述
-  long publishTime = 0;//升级发布时间,ms
-  int publishType = 0;//升级类型 0测试 1正式
-  int upgradeType = 1;//升级策略 1建议 2强制 3手工
-  int popTimes = 0;//提醒次数
-  long popInterval = 0;//提醒间隔
-  int versionCode;
-  String versionName = "";
-  String apkMd5;//包md5值
-  String apkUrl;//APK的CDN外网下载地址
-  long fileSize;//APK文件的大小
-  String imageUrl; // 图片url
-
 ```
 
 七、说明（Android）
