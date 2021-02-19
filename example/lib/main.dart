@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bugly/flutter_bugly.dart';
 
-void main() => FlutterBugly.postCatchedException(
+void main() => INFlutterBugly.postCatchedException(
       () => runApp(MyApp()),
     );
 
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    FlutterBugly.init(
+    INFlutterBugly.init(
       androidAppId: "your android id",
       iOSAppId: "your app id",
     ).then((_result) {
@@ -36,10 +36,10 @@ class _HomePageState extends State<HomePage> {
         print(_result.appId);
       });
     });
-    FlutterBugly.setUserId("user id");
-    FlutterBugly.putUserData(key: "key", value: "value");
+    INFlutterBugly.setUserId("user id");
+    INFlutterBugly.putUserData(key: "key", value: "value");
     int tag = 9527;
-    FlutterBugly.setUserTag(tag);
+    INFlutterBugly.setUserTag(tag);
   }
 
   @override

@@ -1,18 +1,18 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert';
-import 'bean/upgrade_info.dart';
+
 import 'bean/init_result_info.dart';
+import 'bean/upgrade_info.dart';
 
-class FlutterBugly {
-  FlutterBugly._();
+class INFlutterBugly {
+  INFlutterBugly._();
 
-  static const MethodChannel _channel =
-      const MethodChannel('crazecoder/flutter_bugly');
+  static const MethodChannel _channel = const MethodChannel('crazecoder/flutter_bugly');
 
   ///初始化
   static Future<InitResultInfo> init({
@@ -20,8 +20,7 @@ class FlutterBugly {
     String iOSAppId,
     String channel, //自定义渠道标识
   }) async {
-    assert((Platform.isAndroid && androidAppId != null) ||
-        (Platform.isIOS && iOSAppId != null));
+    assert((Platform.isAndroid && androidAppId != null) || (Platform.isIOS && iOSAppId != null));
     Map<String, Object> map = {
       "appId": Platform.isAndroid ? androidAppId : iOSAppId,
       "channel": channel,
@@ -58,8 +57,7 @@ class FlutterBugly {
   }
 
   ///设置关键数据，随崩溃信息上报
-  static Future<Null> putUserData(
-      {@required String key, @required String value}) async {
+  static Future<Null> putUserData({@required String key, @required String value}) async {
     assert(key != null && key.isNotEmpty);
     assert(value != null && value.isNotEmpty);
     Map<String, Object> map = {
@@ -126,23 +124,15 @@ class FlutterBugly {
       filterRegExp,
       details,
     )) {
-      uploadException(
-          message: details.exception.toString(),
-          detail: details.stack.toString());
+      uploadException(message: details.exception.toString(), detail: details.stack.toString());
     }
   }
 
-  static bool _filterException(
-      bool debugUpload,
-      bool _isDebug,
-      FlutterExceptionHandler handler,
-      String filterRegExp,
-      FlutterErrorDetails details) {
+  static bool _filterException(bool debugUpload, bool _isDebug, FlutterExceptionHandler handler,
+      String filterRegExp, FlutterErrorDetails details) {
     //默认debug下打印异常，不上传异常
     if (!debugUpload && _isDebug) {
-      handler == null
-          ? FlutterError.dumpErrorToConsole(details)
-          : handler(details);
+      handler == null ? FlutterError.dumpErrorToConsole(details) : handler(details);
       return true;
     }
     //异常过滤
